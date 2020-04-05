@@ -4,7 +4,12 @@
       <el-col :span="20">
         <el-form :inline="true" :model="formInline" class="demo-form-inline">
           <el-form-item label="审批人">
-            <el-input type="textarea" placeholder="请输入内容" v-model="formInline.user"></el-input>
+            <el-input
+              type="textarea"
+              placeholder="请输入内容or拖动上传文件"
+              :rows="20"
+              v-model="formInline.user"
+            ></el-input>
           </el-form-item>
           <el-form-item label="活动区域">
             <el-select v-model="formInline.region" placeholder="活动区域">
@@ -18,11 +23,11 @@
         </el-form>
       </el-col>
     </el-row>
+    <drop-file></drop-file>
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'BlastQuery',
   data () {
@@ -35,7 +40,7 @@ export default {
   },
   methods: {
     onSubmit () {
-      console.log('submit!')
+      // console.log('submit!')
     }
   }
 }
