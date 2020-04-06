@@ -3,7 +3,15 @@ module.exports = {
   devServer: {
     sockHost: 'http://localhost:8080/', // 配置开发环境地址
     disableHostCheck: true,
-    proxy: 'http://localhost:1081/',
-    public: 'http://localhost:8080/'
+    public: 'http://localhost:8080/',
+    proxy: {
+      '/api': {
+        target: 'http://cotton.hzau.edu.cn:80/web',
+        ws: true, // 允许跨域
+        pathRewrite: {
+          '^/api': '/'
+        }
+      }
+    }
   }
 }

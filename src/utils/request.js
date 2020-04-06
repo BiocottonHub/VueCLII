@@ -6,7 +6,7 @@ const request = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL,
   timeout: 12000,
   headers: {
-    'content-Type': 'application/json',
+    'content-Type': 'multipart/form-data',
     Accpet: 'application/json'
   }
 })

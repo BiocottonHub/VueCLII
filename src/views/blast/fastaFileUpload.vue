@@ -13,7 +13,7 @@
 <script>
 import validateFasta from '@/utils/validateFasta.js'
 export default {
-  name: 'DropFile',
+  name: 'fastaFileUpload',
   props: {
 
   },
@@ -28,7 +28,7 @@ export default {
     }
   },
   /*
-    TODO:
+    TODO: ok
     增加fasta文件校验函数
   */
   methods: {
@@ -42,24 +42,27 @@ export default {
       this.ModalFontColor = { color: '#00a8ff' }
       this.Modalicon = 'el-icon-loading'
       setTimeout(() => {
-        validateFasta(this.fileData, (BaseFlag, ProteinFlag) => {
+        validateFasta(this.fileData, (BaseFlag, ProteinFlag, fileText) => {
           if (BaseFlag && ProteinFlag) {
             this.showModal = true
             this.Modalmessage = 'error fasta file'
             this.ModalFontColor = { color: '#d63031' }
             this.Modalicon = 'el-icon-close'
+            this.$emit('fileStatus', { status: 0, fileText: fileText })
             setTimeout(() => { this.showModal = false }, 1000)
           } else if (!BaseFlag) {
             this.showModal = true
             this.Modalmessage = 'Nucleic acid sequence file'
             this.ModalFontColor = { color: '#4cd137' }
             this.Modalicon = 'el-icon-check'
+            this.$emit('fileStatus', { status: 1, fileText: fileText })
             setTimeout(() => { this.showModal = false }, 1000)
           } else if (!ProteinFlag) {
             this.showModal = true
             this.Modalmessage = 'Protein sequence file'
             this.ModalFontColor = { color: '#4cd137' }
             this.Modalicon = 'el-icon-check'
+            this.$emit('fileStatus', { status: 1, fileText: fileText })
             setTimeout(() => { this.showModal = false }, 1000)
           }
         })
