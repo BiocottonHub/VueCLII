@@ -42,7 +42,7 @@ export default {
       this.ModalFontColor = { color: '#00a8ff' }
       this.Modalicon = 'el-icon-loading'
       setTimeout(() => {
-        validateFasta(this.fileData, (BaseFlag, ProteinFlag, fileText) => {
+        validateFasta.validateFastaByFile(this.fileData, (BaseFlag, ProteinFlag, fileText) => {
           if (BaseFlag && ProteinFlag) {
             this.showModal = true
             this.Modalmessage = 'error fasta file'

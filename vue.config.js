@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/VueCLII/',
+  publicPath: 'http://cotton.hzau.edu.cn/web/public/',
   devServer: {
     sockHost: 'http://localhost:8080/', // 配置开发环境地址
     disableHostCheck: true,
